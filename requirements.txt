@@ -1,0 +1,8 @@
+Flask
+Flask-Login
+Flask-Mail
+flask_wtf
+sqlalchemy
+wtforms
+pillow
+qrcode

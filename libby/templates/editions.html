@@ -1,0 +1,164 @@
+{% extends "base-table.html" %}
+{% block title_block %}Список изданий{% endblock %}
+
+{% block links %}
+<!-- <link rel="stylesheet" type="text/css" href="../static/css/library-table.css"> -->
+{% endblock %}
+{% block url %}
+
+{% endblock %}
+{% block contents %}
+<!--    <button onclick="copyToClipboard('#p1')" style="border: none;background-color:-->
+<!--                    transparent;color: #584B4B;font-weight: 400;font-family: Comfortaa, cursive;font-size: 11px"-->
+<!--            class="block-abs-code">-->
+<!--        <p class="code" style="margin-top: -10px">Код библиотеки:-->
+<!--            {{ library_code }}</p>-->
+<!--        <p id="p1" style="display: none">{{ library_code }}</p></button>-->
+    <link rel="stylesheet" type="text/css" href="../static/css/library-table1.css">
+
+
+<div class="fixed form-small">
+        <form method="post" action="" class="serch_book center">
+            <h3 class="title_search_book">Поиск книги</h3>
+            {{ form.hidden_tag() }}
+            {{ form.crsf_token }}
+
+            {{ form.name(placeholder='Название книги', class='int-search') }}
+
+            <br>
+            {% for error in form.id_.errors %}
+                <p class="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
+
+            {{ form.id_(placeholder='Номер издания', class='int-search') }}
+            <br>
+            {% for error in form.name.errors %}
+                <p class="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
+
+            {{ form.author(placeholder='Фамилия автора', class='int-search') }}
+            <br>
+            {% for error in form.author.errors %}
+                <p class="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
+
+            {{ form.publication_year(placeholder='Год публикации', class='int-search') }}
+            <br>
+            {% for error in form.publication_year.errors %}
+                <p class="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
+
+            {{ form.submit(class='link-search') }}
+            {% for error in form.submit.errors %}
+                <p class="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
+            <a id="clear-filters" class="clear-filters center">Сбросить фильтры</a>
+        </form>
+        {% if current_user.role_id == 2 %}
+        <div>
+            <a href="/library/editions/create" class="add_edition center">Добавить издание</a>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="cards">
+<div class="auto-margin">
+
+        {% for edition in editions %}
+        <div class="card_"  >
+            <img src="../../static/img/book.jpg" class="card-img-top_" alt="...">
+            <div class="card_body_">
+                <h5 class="card-title">{{ edition.id }}) {{ edition.name }}</h5>
+                <hr>
+                <div class="card_text">{{ edition.author }}</div>
+                <hr>
+                <div class="card_text">Год издания {{edition.publication_year}}</div>
+                <hr>
+                <a href="/library/editions/{{ edition.id }}" class="more">Подробнее</a>
+            </div>
+        </div>
+        {% endfor %}
+
+
+    </div>
+</div>
+
+    <div class="fixed form-big">
+        <form method="post" action="" class="serch_book center">
+            <h3 class="title_search_book">Поиск книги</h3>
+            {{ form.hidden_tag() }}
+            {{ form.crsf_token }}
+
+            {{ form.name(placeholder='Название книги', class='int-search') }}
+
+
+            {% for error in form.id_.errors %}
+                <p class="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
+
+            {{ form.id_(placeholder='Номер издания', class='int-search') }}
+
+            {% for error in form.name.errors %}
+                <p class="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
+
+            {{ form.author(placeholder='Фамилия автора', class='int-search') }}
+
+            {% for error in form.author.errors %}
+                <p class="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
+
+            {{ form.publication_year(placeholder='Год публикации', class='int-search') }}
+
+            {% for error in form.publication_year.errors %}
+                <p class="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
+
+            {{ form.submit(class='link-search') }}
+            {% for error in form.submit.errors %}
+                <p class="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
+            <a id="clear-filters" class="clear-filters center" href="editions">Сбросить фильтры</a>
+        </form>
+        {% if current_user.role_id == 2 %}
+        <div>
+            <a href="/library/editions/create" class="add_edition center">Добавить издание</a>
+        </div>
+        {% endif %}
+    </div>
+
+    <script>function clear_onclick() {
+                        let field1 = document.querySelector("#id_");
+                        let field2 = document.querySelector("#name");
+                        let field3 = document.querySelector("#author");
+                        let field4 = document.querySelector("#publication_year");
+
+                        field1.value = "";
+                        field2.value = "";
+                        field3.value = "";
+                        field4.value = "";
+
+                        document.querySelector("#submit").click();
+                    }</script>
+
+{% endblock %}

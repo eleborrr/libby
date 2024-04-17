@@ -1,0 +1,152 @@
+.int-search{
+	    display: block;
+    width: 80%;
+    padding: 0 20px;
+    margin-bottom: 5px;
+    background: #FFF;
+    line-height: 40px;
+    border-width: 0;
+    border-radius: 20px;
+
+    font-family: 'Roboto', sans-serif;
+}
+.serch_book{
+	margin-top: 20px;
+	border-radius: 50px;
+	background: #FEC4A4;
+	margin-left: 2.5vw;
+	width: 20vw;
+	flex-direction: column;
+}
+.title_search_book{
+	margin-top: 50px;
+	color: #FFF;
+    margin-bottom: 20px;
+}
+.link-search{
+	margin-top: 20px;
+	background-color: rgb(151, 198, 125);
+    border-radius: 20px;
+    color: white;
+    font-size: 15px;
+    border-width:0;
+    width: 80%;
+    height: 40px;
+}
+.link-search:hover{
+    background-color: rgba(151, 198, 125, 0.8);
+    color: rgba(0, 0, 0, 0.5);
+}
+.clear-filters{
+	margin-top: 20px;
+	background: #eb8698;
+	text-decoration: none;
+	border-radius: 20px;
+    color: white;
+    font-size: 15px;
+    width: 80%;
+    height: 40px;
+    margin-bottom: 50px;
+}
+.clear-filters:hover{
+	text-decoration: none;
+	background-color: rgba(235, 134, 152, 0.8);
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.card{
+    margin-top:100px;
+    border: 3px solid #FEC4A4;
+    border-radius:20px;
+    background: #FEC4A4;
+
+}
+.list-group-item{
+	background: #FEC4A4;
+
+}
+hr{
+    margin:0px;
+}
+.more{
+color: rgba(255, 255, 255, 1);
+}
+.more:hover{
+color:#000;
+}
+
+.card_{
+	display: flex;
+	background-color: #FEC4A4;
+	border-radius: 10px;
+	border: 3px solid #FEC4A4;
+}
+.card-img-top_{
+
+	border-radius:10px;
+	max-height: 200px;
+	max-width: 400px;
+	height:auto;
+    width:auto;
+}
+.card_body_{
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+.add_edition{
+	margin-left: 4.5vw;
+	width: 16vw;
+	margin-top: 20px;
+	padding: 10px;
+	background-color: #9278aa;
+	color:white;
+	border-radius: 20px;
+
+}.add_edition:hover{
+	color:rgba(0, 0, 0, 0.5);
+}
+.fixed{
+	width: 100%;
+	position: fixed;
+}
+@media(max-width: 1336px){
+	.card_text{
+		font-size: 13px;
+	}
+	.card-title{
+		font-size: 18px;
+	}
+	.link-search{
+		font-size: 13px;
+	}
+	.clear-filters{
+		font-size: 13px;
+	}
+	.add_edition{
+		font-size: 13px;
+	}
+}
+@media(max-width: 1113px){
+	.add_edition{
+		font-size: 12px;
+	}
+	.card-img-top_{
+	    max-height:160px;
+	}
+	.card_body_{
+	padding:4px;
+	}
+	.card-title{
+	font-size:16px;
+	}
+
+}
+.flex-second{
+    margin-top:100px;
+}
+.card_{
+	margin-top: 20px;
+}

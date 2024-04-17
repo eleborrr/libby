@@ -1,0 +1,90 @@
+{% extends "base-table.html" %}
+{% block title_block %}Список учеников{% endblock %}
+
+{% block url %}
+{% endblock %}
+
+{% block links %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/students.css') }}">
+{% endblock %}
+
+
+{% block contents %}
+<link rel="stylesheet" type="text/css" href="../static/css/library-table1.css">
+<div class="fixed form-big">
+        <form method="post" action="" class="serch_book center">
+            <h3 class="title_search_book">Поиск книги</h3>
+            {{ form.hidden_tag() }}
+            {{ form.crsf_token }}
+
+
+
+
+            {{ form.id_(placeholder='Номер ученика ', class='int-search') }}
+                    {% for error in form.id_.errors %}
+                        <p class="alert alert-danger" role="alert">
+                            {{ error }}
+                        </p>
+                    {% endfor %}
+
+
+            {{ form.surname(placeholder='Фамилия ученика ', class='int-search') }}
+                    {% for error in form.surname.errors %}
+                        <p class="alert alert-danger" role="alert">
+                            {{ error }}
+                        </p>
+                    {% endfor %}
+
+
+            {{ form.class_num(placeholder='Номер класса ученика ', class='int-search') }}
+                    {% for error in form.class_num.errors %}
+                        <p class="alert alert-danger" role="alert">
+                            {{ error }}
+                        </p>
+                    {% endfor %}
+
+            {{ form.submit(class='link-search') }}
+            {% for error in form.submit.errors %}
+                <p class="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
+            <a id="clear-filters" class="clear-filters center">Сбросить фильтры</a>
+        </form>
+    </div>
+<div class="cards">
+    <div class="auto-margin">
+
+        {% for student in students %}
+        <div class="card_"  >
+            <img src="../../static/img/book.jpg" class="card-img-top_" alt="...">
+            <div class="card_body_">
+                <h5 class="card-title">{{ student.id }}</h5>
+                <hr>
+                <div class="card_text">{{ student.name }} {{ student.surname }}</div>
+                <hr>
+                <div class="card_text">Год издания  </div>
+                <hr>
+
+            </div>
+        </div>
+        {% endfor %}
+
+            {#            {% for student in students %}#}
+            {#                <div class="izd-item" style="padding: 5px">#}
+            {#                    <span style="background-color: #98D9E8;margin-left: 0">{{ student.id }}</span>#}
+            {#                    <a href="/library/profile/{{ student.id }}">{{ student.surname }} {{ student.name }}</a>#}
+            {#                    <span>{{ student.class_num }} класс</span>#}
+            {#                    <a class='link-izd' href='/library/delete_student/{{ student.id }}'>Удалить</a>#}
+            {#                </div>#}
+            {#            {% endfor %}#}
+{#            <script src="{{ url_for("static", filename="js/load_things.js") }}"></script>#}
+
+            <p id="next-page">Показать далее</p>
+                    <script>
+                {{ generator.generate()|safe }}
+            </script>
+
+    </div>
+</div>
+{% endblock %}

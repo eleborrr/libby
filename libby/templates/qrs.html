@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if current_user.role_id == 2 %}
+            {% for image in lists %}
+
+                <img src="data:image/jpeg;base64,{{ image }}" alt="lol" style="width: 70%"><br>
+                <a href="data:image/jpeg;base64,{{ image }}" download="list_{{ loop.index }}.jpeg"
+                   style="display: block;margin-bottom: 100px;width: 100%">Скачать</a><br>
+
+
+            {% endfor %}
+        {% endif %}
+</body>
+</html>
